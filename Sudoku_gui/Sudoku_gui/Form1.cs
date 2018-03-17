@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,6 +83,36 @@ namespace Sudoku_gui
             int y = e.ColumnIndex;
 
             MessageBox.Show("Zmieniono cos !");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int ilKol = dataGridView1.Rows.Count;
+            int[,] tab = new int[9, 9];
+            int j = 0, k = 0;
+            for (int i=0; i < ilKol;i++)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    IEnumerator enumerator = row.Cells.GetEnumerator();
+                    while (enumerator.MoveNext() == true)
+                    {
+                        DataGridViewCell curr = (DataGridViewCell)enumerator.Current;
+                        if (curr.Value != null)
+                        {
+                            string cr = curr.Value.ToString();
+
+
+                            int cur = Int32.Parse(curr.Value.ToString());
+                            tab[j, k] = cur;
+                        }
+                        enumerator.MoveNext();
+                    }
+                    k++;
+                }
+                j++;
+                
+            }
         }
     }
 }
