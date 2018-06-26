@@ -101,8 +101,6 @@ namespace Sudoku_gui
                         if (curr.Value != null)
                         {
                             string cr = curr.Value.ToString();
-
-
                             int cur = Int32.Parse(curr.Value.ToString());
                             tab[j, k] = cur;
                         }
